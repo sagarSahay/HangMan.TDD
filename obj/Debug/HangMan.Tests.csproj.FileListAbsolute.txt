@@ -1,0 +1,7 @@
+C:\Git\HangMan.Tests\HangMan.Tests\obj\Debug\HangMan.Tests.csprojResolveAssemblyReference.cache
+C:\Git\HangMan.Tests\HangMan.Tests\bin\Debug\HangMan.Tests.dll
+C:\Git\HangMan.Tests\HangMan.Tests\bin\Debug\HangMan.Tests.pdb
+C:\Git\HangMan.Tests\HangMan.Tests\bin\Debug\nunit.framework.dll
+C:\Git\HangMan.Tests\HangMan.Tests\bin\Debug\nunit.framework.xml
+C:\Git\HangMan.Tests\HangMan.Tests\obj\Debug\HangMan.Tests.dll
+C:\Git\HangMan.Tests\HangMan.Tests\obj\Debug\HangMan.Tests.pdb
