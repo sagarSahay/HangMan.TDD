@@ -4,59 +4,69 @@ using System.Linq;
 using System.Text;
 
 namespace HangMan.Tests
-{
-    public class Game
     {
+    public class Game
+        {
         public int TotalTries { get; set; }
-        public List<char> CorrectGuessedLetters=new List<char>();
-        public List<char> InCorrectGuessedLetters=new List<char>();
+        public List<char> CorrectGuessedLetters = new List<char>();
+        public List<char> InCorrectGuessedLetters = new List<char>();
 
         public string MovieName
-        {
+            {
             get;
             set;
-        }
-
-        public Outcomes PlayerGuessesAWord(char[] movieName)
-        {
-            if (MovieName == string.Join("", movieName) && TotalTries<=10)
-            {
-                return  Outcomes.PlayerWins;
             }
-            else
+
+        public Outcomes PlayerGuessesAWord ( char[] movieName )
             {
-                if (TotalTries <= 10)
+            //if (MovieName == string.Join("", movieName) && TotalTries <= 10)
+            //    {
+            //    return Outcomes.PlayerWins;
+            //    }
+            //else
+            //    {
+
+
+            //    }
+            if (TotalTries <= 9)
                 {
-                    foreach (char s in movieName)
+                foreach (char s in movieName)
                     {
-                        if (MovieName.ToCharArray().Any(x => x == s))
+                    if (MovieName.ToCharArray().Any(x => x == s))
                         {
-                            if (!CorrectGuessedLetters.Any(y => y == s))
+                        if (!CorrectGuessedLetters.Any(y => y == s))
                             {
-                                CorrectGuessedLetters.Add(s);
-                                TotalTries = TotalTries + 1;
+                            CorrectGuessedLetters.Add(s);
+                            TotalTries = TotalTries + 1;
+                            }
+
+                        IEnumerable<char> diff = MovieName.Distinct().ToList().Except(CorrectGuessedLetters);
+                        if (diff.Count() == 0 && TotalTries <= 9)
+                            {
+                            return Outcomes.PlayerWins;
+                            }
+                        }
+                    else
+                        {
+                        if (!InCorrectGuessedLetters.Any(y => y == s))
+                            {
+                            InCorrectGuessedLetters.Add(s);
+                            TotalTries = TotalTries + 1;
                             }
 
                         }
-                        else
+                    if (TotalTries >= 9)
                         {
-                            if (!InCorrectGuessedLetters.Any(y => y == s))
-                            {
-                                InCorrectGuessedLetters.Add(s);
-                                TotalTries = TotalTries + 1;
-                            }
+                        return Outcomes.PlayerLooses;
                         }
                     }
-                    if()
-                    return Outcomes.PlayerContinues;
+
+                return Outcomes.PlayerContinues;
                 }
-                else
+            else
                 {
-                    return Outcomes.PlayerLooses;
+                return Outcomes.PlayerLooses;
                 }
-                
             }
-            return Outcomes.PlayerLooses;
         }
     }
-}
